@@ -1262,7 +1262,9 @@ dependencies = [
     { name = "fastapi" },
     { name = "mkdocs" },
     { name = "mlflow" },
+    { name = "numpy" },
     { name = "pandas" },
+    { name = "pydantic" },
     { name = "ruff" },
     { name = "scikit-learn" },
 ]
@@ -1272,7 +1274,9 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.121.2" },
     { name = "mkdocs", specifier = ">=1.6.1" },
     { name = "mlflow", specifier = ">=3.6.0" },
+    { name = "numpy", specifier = ">=2.3.5" },
     { name = "pandas", specifier = ">=2.3.3" },
+    { name = "pydantic", specifier = ">=2.12.4" },
     { name = "ruff", specifier = ">=0.14.5" },
     { name = "scikit-learn", specifier = ">=1.7.2" },
 ]

@@ -2,3 +2,5 @@ fastapi
 mlflow
 scikit-learn
 pandas
+numpy 
+pydantic
