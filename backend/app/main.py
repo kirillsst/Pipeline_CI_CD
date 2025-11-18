@@ -1,22 +1,33 @@
 from fastapi import FastAPI
-from app.schemas import PredictRequest
-from app.model import load_model
+from pydantic import BaseModel
 import numpy as np
+from .model_loader import load_model
 
-app = FastAPI(title="ML Prediction API")
+app = FastAPI()
+model = load_model()
 
+CLASS_NAMES = {
+    0: "Setosa",
+    1: "Versicolor",
+    2: "Virginica"
+}
+
+class IrisInput(BaseModel):
+    values: list[float]
 
 @app.get("/")
-def health_check():
+def root():
     return {"status": "ok"}
 
-
 @app.post("/predict")
-def predict(payload: PredictRequest):
-    model = load_model()
+def predict(data: IrisInput):
+    X = np.array(data.values).reshape(1, -1)
+    pred_class = int(model.predict(X)[0])
+    pred_name = CLASS_NAMES[pred_class]
+    return {
+        "class_index": pred_class,
+        "class_name": pred_name
+    }
 
-    data = np.array(payload.values).reshape(1, -1)
-
-    prediction = model.predict(data)
-
-    return {"prediction": prediction.tolist()}
+## run 
+# uvicorn app.main:app --reload

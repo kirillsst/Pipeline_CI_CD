@@ -1,4 +1,4 @@
-import mlflow 
+import mlflow
 
 experiment = mlflow.set_experiment(experiment_name="my-first-experiment")
 mlflow.set_experiment("my-first-experiment")

@@ -3,6 +3,12 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import mlflow
+import joblib
+import os 
+
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "model")
+os.makedirs(MODEL_DIR, exist_ok=True)
+MODEL_PATH = os.path.join(MODEL_DIR, "model.pkl")
 
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
 mlflow.set_experiment("my-first-experiment")
@@ -39,6 +45,10 @@ iris_feature_names = datasets.load_iris().feature_names
 result = pd.DataFrame(X_test, columns=iris_feature_names)
 result["actual_class"] = y_test
 result["predicted_class"] = predictions
+
+joblib.dump(lr, MODEL_PATH)
+print(f"Saved model.pkl in {MODEL_PATH}")
+
 
 print(result[:4])
 
