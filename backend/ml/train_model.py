@@ -5,6 +5,9 @@ from sklearn.linear_model import LogisticRegression
 import mlflow
 import joblib
 import os
+from backend.app.core.logger import get_logger
+
+logger = get_logger(__name__) 
 
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "model")
 os.makedirs(MODEL_DIR, exist_ok=True)
@@ -17,6 +20,7 @@ mlflow.sklearn.autolog()
 
 def train_and_save_model():
     # Load Iris dataset
+    logger.info("Loading Iris dataset")
     X, y = datasets.load_iris(return_X_y=True)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
@@ -29,12 +33,15 @@ def train_and_save_model():
         "random_state": 8888,
     }
 
+    logger.info(f"Training with params: {params}")
+
     with mlflow.start_run() as run:
         lr = LogisticRegression(**params)
         lr.fit(X_train, y_train)
 
         # MLflow autologged model URI
         model_uri = f"runs:/{run.info.run_id}/model"
+        logger.info(f"Model stored in MLflow: {model_uri}")
 
     # Load model to check autologged save
     loaded_model = mlflow.sklearn.load_model(model_uri)
@@ -56,7 +63,9 @@ def train_and_save_model():
 
 
 if __name__ == "__main__":
+    logger.info("Training script started")
     df, model = train_and_save_model()
+    logger.info("Training script finished")
     print(df[:4])
 
 ## run python3 train_model.py

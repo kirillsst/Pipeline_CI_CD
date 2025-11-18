@@ -1,6 +1,11 @@
 import streamlit as st
 import requests
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("streamlit_app")
+
+logger.info("Streamlit started")
 st.title("Iris Flower Classifier 🌸")
 
 st.write("Entrez les caractéristiques de la fleur d'iris :")
@@ -14,6 +19,7 @@ API_URL = "http://127.0.0.1:8000/predict"
 
 if st.button("Predict"):
     payload = {"values": [sepal_length, sepal_width, petal_length, petal_width]}
+    logger.info(f"Loading from URL API: {API_URL}")
     try:
         response = requests.post(API_URL, json=payload)
         response.raise_for_status()

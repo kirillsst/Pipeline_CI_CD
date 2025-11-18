@@ -8,17 +8,17 @@ ________________________________________________________________________________
 # 2. Train the Model
 ##### Script: train_model.py
 ##### What it does: loads the Iris dataset, trains a Logistic Regression model, saves the model to ml/model/model.pkl, and logs metrics and artifacts to MLflow.
-* ~/Pipeline_CI_CD/backend/ml$ python3 train_model.py
+* ~/Pipeline_CI_CD$ python -m backend.ml.train_model
 ____________________________________________________________________________________________________________________________
 # 3. Start the API
 ##### Script: backend/app/main.py (FastAPI)
 ##### What it does: starts the API with two endpoints:
-##### *GET /* – health check, returns *{"status": "ok"}*
+##### *GET /* – health check, returns *{"message": "API is working"}*
 ##### *POST /predict* – accepts input data and returns the predicted Iris class.
-* ~/Pipeline_CI_CD/backend$ uvicorn app.main:app --reload
+* ~/Pipeline_CI_CD$ uvicorn backend.app.main:app --reload
 * API is available at: http://127.0.0.1:8000
 ____________________________________________________________________________________________________________________________
 # 4. Launch Streamlit
 ##### Script: app/dashboard.py
 ##### What it does: visualizes predictions.
-* ~/Pipeline_CI_CD/fontend$ streamlit run app.py
+* ~/Pipeline_CI_CD$ streamlit run frontend/app.py
