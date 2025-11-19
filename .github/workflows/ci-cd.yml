@@ -64,7 +64,7 @@ jobs:
       # 8. Build and push backend image
       - name: Build backend Docker image
         run: |
-          docker build -t ${{ env.DOCKERHUB_USERNAME }}/backend:latest ./backend
+          docker build -t ${{ env.DOCKERHUB_USERNAME }}/backend:latest -f backend/Dockerfile .
       - name: Push backend image
         run: docker push ${{ env.DOCKERHUB_USERNAME }}/backend:latest
 
