@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y build-essential && apt-get clean
 COPY pyproject.toml uv.lock ./
 RUN pip install uv && uv sync --no-dev
 
-COPY backend .
+COPY . .
 
 EXPOSE 8000
 
