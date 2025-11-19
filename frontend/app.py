@@ -15,7 +15,7 @@ sepal_width  = st.number_input("Sepal width (cm)", 0.0, 10.0, 3.5)
 petal_length = st.number_input("Petal length (cm)", 0.0, 10.0, 1.4)
 petal_width  = st.number_input("Petal width (cm)", 0.0, 10.0, 0.2)
 
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "http://backend:8000/predict"
 
 if st.button("Predict"):
     payload = {"values": [sepal_length, sepal_width, petal_length, petal_width]}
