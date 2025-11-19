@@ -37,8 +37,10 @@ jobs:
 
       # 4. Run backend tests
       - name: Run backend tests
+        env:
+          PYTHONPATH: ${{ env.BACKEND_PATH }}
         run: |
-          pytest ${{ env.BACKEND_PATH }}/tests
+          python -m pytest ${{ env.BACKEND_PATH }}/tests
 
       # 5. Build MkDocs documentation
       - name: Build docs
