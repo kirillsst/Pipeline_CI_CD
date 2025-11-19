@@ -1,0 +1,32 @@
+name: Train Model
+
+on:
+  workflow_dispatch:  # run manual
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Train model
+        run: |
+          python -m backend.ml.train_model
+
+      - name: Upload trained model
+        uses: actions/upload-artifact@v3
+        with:
+          name: trained-model
+          path: backend/ml/model/model.pkl
