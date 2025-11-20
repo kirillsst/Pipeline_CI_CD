@@ -11,6 +11,7 @@ It includes:
 - Deployment on Azure App Service
 
 ## Structure project 
+````bash
 ├── backend/         # FastAPI backend & ML code
 ├── frontend/        # Streamlit app
 ├── docs/            # MkDocs documentation
@@ -21,7 +22,7 @@ It includes:
 ├── README.md
 ├── mkdocs.yml
 └── ...
-
+````
 ## Getting Started
 # 1. Clone the repository
 git clone https://github.com/kirillsst/Pipeline_CI_CD.git
