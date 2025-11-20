@@ -40,6 +40,7 @@ mkdocs serve
 
 ## CI/CD
 - On push to main:
+    - Code style is checked with **Ruff**    
     - Tests are run
     - Docs are built and deployed to GitHub Pages
     - Docker images for backend & frontend are built and pushed to DockerHub
