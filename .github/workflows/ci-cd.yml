@@ -34,6 +34,12 @@ jobs:
           pip install -r ${{ env.BACKEND_PATH }}/requirements.txt
           pip install -r ${{ env.FRONTEND_PATH }}/requirements.txt
           pip install mkdocs mkdocs-material
+          
+      # 3.5. Run Ruff linter
+      - name: Run Ruff linter
+        run: |
+          pip install ruff
+          ruff check ${{ env.BACKEND_PATH }} ${{ env.FRONTEND_PATH }}
 
       # 4. Run backend tests
       - name: Run backend tests
