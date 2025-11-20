@@ -1,6 +1,4 @@
 import os
-import pytest
-import joblib
 from ml.train_model import train_and_save_model, MODEL_PATH
 
 def test_train_and_save_model():
