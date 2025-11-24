@@ -47,7 +47,6 @@ mkdocs serve
 
 ## Azure Deployment
 - Backend and frontend deployed on Azure App Service
-- Environment variables are configured in App Service settings
 - Backend URL used in frontend: https://irispipelinekirillsst-ebhncxhycxe2g6gt.francecentral-01.azurewebsites.net
 - Frontend URL: https://irispipelinefrontendkirillsst-fxgra2gxembsf0gy.francecentral-01.azurewebsites.net
 
